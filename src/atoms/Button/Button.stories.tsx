@@ -22,7 +22,7 @@ export const ButtonDefault: Story = {
           background: "#0a2343",
         }}
       >
-        <Button {...args}>Demo</Button>
+        <Button {...args}>DEMO</Button>
       </div>
       <div
         style={{
@@ -32,14 +32,24 @@ export const ButtonDefault: Story = {
           justifyContent: "center",
         }}
       >
-        <Button {...args}>Demo</Button>
+        <Button {...args}>DEMO</Button>
+      </div>
+      <div
+        style={{
+          width: "200px",
+          padding: "30px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Button {...args} />
       </div>
     </>
   ),
   args: {
     rounded: true,
     size: "x-small",
-    disabled: true,
+    disabled: false,
     Icon: Heart,
     iconPosition: "right",
   },

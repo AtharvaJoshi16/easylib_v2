@@ -4,7 +4,7 @@ import { TypographyProps } from "../Typography/Typography.model";
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     TypographyProps {
-  children: string;
+  children?: string;
   buttonVariant?: "text-on-dark" | "text-on-light" | "contained" | "outlined";
   rounded?: boolean;
   color?:
@@ -20,4 +20,5 @@ export interface ButtonProps
   Icon?: React.ElementType;
   size?: "x-small" | "small" | "medium" | "large";
   iconPosition?: "left" | "right";
+  iconOnly?: boolean;
 }

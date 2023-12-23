@@ -18,28 +18,42 @@
   &--italic {
     font-style: italic;
   }
-
-  &--font-weight {
-    &--lighter {
-      font-weight: 100;
-    }
+  &--styling {
     &--light {
-      font-weight: 200;
+      font-family: var(--rubik-light);
+    }
+    &--regular {
+      font-family: var(--rubik-regular);
+    }
+    &--medium {
+      font-family: var(--rubik-medium);
     }
     &--bold {
-      font-weight: bold;
+      font-family: var(--rubik-bold);
     }
-    &--bolder {
-      font-weight: bolder;
+    &--semibold {
+      font-family: var(--rubik-semibold);
     }
-    &--x-bold {
-      font-weight: 800;
+    &--extrabold {
+      font-family: var(--rubik-extrabold);
     }
-    &--xx-bold {
-      font-weight: 900;
+    &--italic {
+      font-family: var(--rubik-italic);
     }
-    &--xxx-bold {
-      font-weight: 1000;
+    &--light-italic {
+      font-family: var(--rubik-light-italic);
+    }
+    &--medium-italic {
+      font-family: var(--rubik-medium-italic);
+    }
+    &--bold-italic {
+      font-family: var(--rubik-bold-italic);
+    }
+    &--semibold-italic {
+      font-family: var(--rubik-semibold-italic);
+    }
+    &--extrabold-italic {
+      font-family: var(--rubik-extrabold-italic);
     }
   }
 }

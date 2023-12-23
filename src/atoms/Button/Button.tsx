@@ -10,6 +10,7 @@ const Button = ({
   size = "small",
   Icon,
   iconPosition = "left",
+  iconOnly = false,
   rounded = false,
   buttonVariant = "contained",
   color = "primary",
@@ -27,7 +28,8 @@ const Button = ({
         buttonVariant === "text-on-dark" || buttonVariant === "text-on-light"
       ),
     },
-    `btn--${buttonVariant}`
+    `btn--${buttonVariant}`,
+    { "btn--icon-only": iconOnly }
   );
   return (
     <button className={classes} {...props}>
@@ -36,9 +38,11 @@ const Button = ({
           <Icon />
         </span>
       )}
-      <Typography {...props} variant="p">
-        {children}
-      </Typography>
+      {children && (
+        <Typography {...props} variant="p">
+          {children}
+        </Typography>
+      )}
       {Icon && iconPosition === "right" && (
         <span className="btn__icon">
           <Icon />

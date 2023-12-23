@@ -11,7 +11,6 @@ export const Typography = ({
   strike = false,
   italic = false,
   styling = "regular",
-  fontWeight = "medium",
   style,
   className,
 }: TypographyProps) => {
@@ -24,8 +23,7 @@ export const Typography = ({
     { ["typography--underline"]: underline },
     { ["typography--strike"]: strike },
     { ["typography--italic"]: italic },
-    { [`typography--font-weight--${fontWeight}`]: fontWeight },
-    `typography--${styling}`
+    `typography--styling--${styling}`
   );
   const Tag = variant as keyof JSX.IntrinsicElements;
 

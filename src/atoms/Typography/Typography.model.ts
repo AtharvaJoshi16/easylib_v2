@@ -2,19 +2,10 @@
 export interface TypographyProps {
   variant?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
   wrap?: boolean;
-  children: string;
+  children?: string;
   underline?: boolean;
   strike?: boolean;
   italic?: boolean;
-  fontWeight?:
-    | "lighter"
-    | "light"
-    | "medium"
-    | "bold"
-    | "bolder"
-    | "x-bold"
-    | "xx-bold"
-    | "xxx-bold";
   styling?:
     | "light"
     | "regular"
