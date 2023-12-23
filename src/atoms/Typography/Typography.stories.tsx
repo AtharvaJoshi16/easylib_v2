@@ -38,7 +38,6 @@ export const TypographyVariants: Story = {
   ),
   args: {
     variant: "h1",
-    noWrap: false,
     underline: false,
     strike: false,
     italic: false,
@@ -47,23 +46,5 @@ export const TypographyVariants: Story = {
     style: {
       fontSize: "12px",
     },
-  },
-};
-
-export const TypographyNoWrap: Story = {
-  render: ({ ...args }) => (
-    <div style={{ margin: "40px", width: "250px" }}>
-      <Typography {...args}>
-        This is a sample typography text with overflown text.
-      </Typography>
-    </div>
-  ),
-  args: {
-    variant: "h3",
-    noWrap: true,
-    underline: false,
-    strike: false,
-    italic: false,
-    styling: "medium",
   },
 };

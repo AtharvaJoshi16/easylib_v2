@@ -1,0 +1,302 @@
+@import "../../globals/index.scss";
+
+@mixin outline-features(
+  $border-color,
+  $hover-color,
+  $active-color,
+  $disabled-color
+) {
+  background-color: transparent;
+  border-color: $border-color;
+  .typography {
+    color: $border-color;
+  }
+  &:hover:not([disabled]) {
+    background-color: transparent;
+    border-color: $hover-color;
+    .typography {
+      color: $hover-color;
+    }
+  }
+  &:active:not([disabled]) {
+    background-color: transparent;
+    border-color: $active-color;
+    .typography {
+      color: $active-color;
+    }
+  }
+  &:disabled {
+    opacity: 20%;
+    border-color: $disabled-color;
+    .typography {
+      color: $disabled-color;
+    }
+  }
+  svg {
+    stroke: $border-color;
+  }
+}
+
+@mixin contained-features(
+  $background-color,
+  $hover-color,
+  $active-color,
+  $disabled-color
+) {
+  background-color: $background-color;
+  &:hover:not([disabled]) {
+    background-color: $hover-color;
+  }
+  &:active:not([disabled]) {
+    background-color: $active-color;
+  }
+  &:disabled {
+    background-color: $disabled-color;
+  }
+}
+
+.btn {
+  border: 2px solid transparent;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+
+  &__icon {
+    display: inherit;
+  }
+
+  &--x-small {
+    font-size: 14px;
+    padding: 4px 8px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+  &--small {
+    font-size: 16px;
+    padding: 8px 16px;
+    gap: 6px;
+    svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2.5px;
+    }
+  }
+  &--medium {
+    font-size: 18px;
+    padding: 10px 20px;
+    gap: 8px;
+    &.btn--rounded {
+      border-radius: 30px;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2.5px;
+    }
+  }
+  &--large {
+    font-size: 20px;
+    gap: 10px;
+    padding: 12px 20px;
+    &.btn--rounded {
+      border-radius: 30px;
+    }
+    svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2.5px;
+    }
+  }
+
+  &--rounded {
+    border-radius: 20px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary-900;
+    outline-offset: 2px;
+  }
+
+  &--contained {
+    .typography {
+      color: white;
+    }
+    svg {
+      stroke: white;
+    }
+    &--primary {
+      @include contained-features(
+        $primary-700,
+        $primary-800,
+        $primary-900,
+        $primary-100
+      );
+    }
+
+    &--secondary {
+      @include contained-features(
+        $secondary-700,
+        $secondary-800,
+        $secondary-900,
+        $secondary-100
+      );
+    }
+
+    &--tertiary {
+      @include contained-features(
+        $tertiary-700,
+        $tertiary-800,
+        $tertiary-900,
+        $tertiary-100
+      );
+    }
+
+    &--grey {
+      @include contained-features($grey-700, $grey-800, $grey-900, $grey-100);
+    }
+
+    &--error {
+      @include contained-features($red-700, $red-800, $red-900, $red-100);
+    }
+
+    &--success {
+      @include contained-features(
+        $green-700,
+        $green-800,
+        $green-900,
+        $green-100
+      );
+    }
+
+    &--warning {
+      @include contained-features(
+        $yellow-700,
+        $yellow-800,
+        $yellow-900,
+        $yellow-100
+      );
+    }
+
+    &--light {
+      .typography {
+        color: $text-primary;
+      }
+      svg {
+        stroke: $text-primary;
+      }
+      @include contained-features(white, $grey-100, $grey-200, $grey-100);
+    }
+
+    &--dark {
+      @include contained-features($grey-900, $grey-800, $grey-700, $grey-200);
+    }
+  }
+
+  &--outlined {
+    background-color: white;
+    border-width: 1.5px;
+    &:active:not([disabled]) {
+      background-color: $grey-100;
+    }
+    &--primary {
+      @include outline-features(
+        $primary-700,
+        $primary-800,
+        $primary-900,
+        $primary-100
+      );
+    }
+
+    &--secondary {
+      @include outline-features(
+        $secondary-700,
+        $secondary-800,
+        $secondary-900,
+        $secondary-100
+      );
+    }
+
+    &--tertiary {
+      @include outline-features(
+        $tertiary-700,
+        $tertiary-800,
+        $tertiary-900,
+        $tertiary-100
+      );
+    }
+
+    &--grey {
+      @include outline-features($grey-700, $grey-800, $grey-900, $grey-100);
+    }
+
+    &--error {
+      @include outline-features($red-700, $red-800, $red-900, $red-100);
+    }
+
+    &--success {
+      @include outline-features($green-700, $green-800, $green-900, $green-100);
+    }
+
+    &--warning {
+      @include outline-features(
+        $yellow-700,
+        $yellow-800,
+        $yellow-900,
+        $yellow-100
+      );
+    }
+
+    &--light {
+      @include outline-features(white, $grey-400, $grey-600, $grey-100);
+    }
+
+    &--dark {
+      @include outline-features($grey-900, $grey-800, $grey-700, $grey-200);
+    }
+  }
+
+  &--text-on-light {
+    background-color: transparent;
+    svg {
+      stroke: $text-primary;
+    }
+    .typography {
+      color: $text-primary;
+    }
+    &:hover:not([disabled]) {
+      background-color: $grey-100;
+    }
+    &:active:not([disabled]) {
+      background-color: $grey-200;
+    }
+    &:disabled {
+      opacity: 20%;
+    }
+  }
+
+  &--text-on-dark {
+    background-color: transparent;
+    svg {
+      stroke: white;
+    }
+    .typography {
+      color: white;
+    }
+    &:hover:not([disabled]) {
+      background: rgba(202, 213, 228, 0.3);
+      color: $text-primary;
+    }
+    &:active:not([disabled]) {
+      background: rgba(202, 213, 228, 0.1);
+      color: $text-primary;
+    }
+    &:disabled {
+      opacity: 20%;
+    }
+  }
+}

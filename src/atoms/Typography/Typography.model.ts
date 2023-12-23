@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface TypographyProps {
-  variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
-  noWrap?: boolean;
+  variant?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
   wrap?: boolean;
   children: string;
   underline?: boolean;
@@ -16,7 +15,7 @@ export interface TypographyProps {
     | "x-bold"
     | "xx-bold"
     | "xxx-bold";
-  styling:
+  styling?:
     | "light"
     | "regular"
     | "medium"
