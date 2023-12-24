@@ -3,7 +3,7 @@ import { TypographyProps } from "./Typography.model";
 import React from "react";
 import "./Typography.scss";
 
-export const Typography = ({
+const Typography = ({
   variant = "p",
   wrap = false,
   children,
@@ -33,3 +33,5 @@ export const Typography = ({
     </Tag>
   );
 };
+
+export default Typography;

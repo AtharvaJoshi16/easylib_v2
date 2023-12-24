@@ -8,29 +8,21 @@
 ) {
   background-color: transparent;
   border-color: $border-color;
-  .typography {
-    color: $border-color;
-  }
+  @include override-font-color($border-color);
   &:hover:not([disabled]) {
     background-color: transparent;
     border-color: $hover-color;
-    .typography {
-      color: $hover-color;
-    }
+    @include override-font-color($hover-color);
   }
   &:active:not([disabled]) {
     background-color: transparent;
     border-color: $active-color;
-    .typography {
-      color: $active-color;
-    }
+    @include override-font-color($active-color);
   }
   &:disabled {
     opacity: 20%;
     border-color: $disabled-color;
-    .typography {
-      color: $disabled-color;
-    }
+    @include override-font-color($disabled-color);
   }
   svg {
     stroke: $border-color;
@@ -67,6 +59,11 @@
     display: inherit;
   }
 
+  &--full {
+    width: 100%;
+    justify-content: center;
+  }
+
   &--x-small {
     font-size: 14px;
     padding: 4px 8px;
@@ -76,6 +73,7 @@
     svg {
       width: 12px;
       height: 12px;
+      stroke-width: 2.5px;
     }
   }
   &--small {
@@ -134,9 +132,8 @@
   }
 
   &--contained {
-    .typography {
-      color: white;
-    }
+    @include override-font-color(white);
+
     svg {
       stroke: white;
     }
@@ -194,9 +191,8 @@
     }
 
     &--light {
-      .typography {
-        color: $text-primary;
-      }
+      @include override-font-color($text-primary);
+
       svg {
         stroke: $text-primary;
       }
@@ -276,9 +272,8 @@
     svg {
       stroke: $text-primary;
     }
-    .typography {
-      color: $text-primary;
-    }
+    @include override-font-color($text-primary);
+
     &:hover:not([disabled]) {
       background-color: $grey-100;
     }
@@ -295,9 +290,8 @@
     svg {
       stroke: white;
     }
-    .typography {
-      color: white;
-    }
+    @include override-font-color(white);
+
     &:hover:not([disabled]) {
       background: rgba(202, 213, 228, 0.3);
       color: $text-primary;

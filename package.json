@@ -3,6 +3,7 @@
   "module": "build/index.esm.js",
   "types": "build/index.d.ts",
   "dependencies": {
+    "@storybook/addon-a11y": "^7.6.6",
     "@types/react": "^18.2.45",
     "classnames": "^2.3.2",
     "lucide-react": "^0.300.0",

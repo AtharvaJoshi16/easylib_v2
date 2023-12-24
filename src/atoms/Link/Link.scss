@@ -1,0 +1,65 @@
+@import "../../globals/index.scss";
+.link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+  @include focusVisible();
+
+  &--default {
+    @include override-font-color($text-primary);
+    &:hover {
+      text-decoration-color: $text-primary;
+    }
+  }
+
+  &--primary {
+    @include override-font-color($primary-600);
+    &:hover {
+      text-decoration-color: $primary-600;
+    }
+  }
+
+  &--secondary {
+    @include override-font-color($secondary-600);
+    &:hover {
+      text-decoration-color: $secondary-600;
+    }
+  }
+
+  &--white-on-dark {
+    @include override-font-color(white);
+    &:hover {
+      text-decoration-color: white;
+    }
+  }
+
+  &--success {
+    @include override-font-color($green-600);
+    &:hover {
+      text-decoration-color: $green-600;
+    }
+  }
+
+  &--grey {
+    @include override-font-color($grey-600);
+    &:hover {
+      text-decoration-color: $grey-600;
+    }
+  }
+
+  &--error {
+    @include override-font-color($red-600);
+    &:hover {
+      text-decoration-color: $red-600;
+    }
+  }
+
+  &--warning {
+    @include override-font-color($yellow-600);
+    &:hover {
+      text-decoration-color: $yellow-600;
+    }
+  }
+}

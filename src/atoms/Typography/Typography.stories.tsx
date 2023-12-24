@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Typography } from "./Typography";
+import Typography from "./Typography";
 import React from "react";
 const meta: Meta<typeof Typography> = {
   component: Typography,
@@ -42,7 +42,6 @@ export const TypographyVariants: Story = {
     strike: false,
     italic: false,
     styling: "regular",
-    fontWeight: "bolder",
     style: {
       fontSize: "12px",
     },

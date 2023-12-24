@@ -1,6 +1,6 @@
 import React from "react";
 import { ButtonProps } from "./Button.model";
-import { Typography } from "../Typography";
+import Typography from "../Typography";
 import "./Button.scss";
 import classNames from "classnames";
 
@@ -14,6 +14,7 @@ const Button = ({
   rounded = false,
   buttonVariant = "contained",
   color = "primary",
+  full = false,
   ...props
 }: ButtonProps) => {
   const classes = classNames(
@@ -29,7 +30,8 @@ const Button = ({
       ),
     },
     `btn--${buttonVariant}`,
-    { "btn--icon-only": iconOnly }
+    { "btn--icon-only": iconOnly },
+    { "btn--full": full }
   );
   return (
     <button className={classes} {...props}>
