@@ -15,6 +15,7 @@ const Button = ({
 	buttonVariant = 'contained',
 	color = 'primary',
 	full = false,
+	floating = false,
 	...props
 }: ButtonProps) => {
 	const classes = classNames(
@@ -23,6 +24,7 @@ const Button = ({
 		{
 			'btn--rounded': rounded,
 		},
+		{ 'btn--floating': floating },
 		`btn--${size}`,
 		{
 			[`btn--${buttonVariant}--${color}`]: !(

@@ -33,6 +33,7 @@ export const ChipDefault: Story = {
 		label: 'Chip',
 		clickable: false,
 		defaultSelected: true,
+		selectable: true,
 		DeleteIcon: XCircle,
 		onChipSelectUnselect: onSelect,
 		onDelete: onDelete,

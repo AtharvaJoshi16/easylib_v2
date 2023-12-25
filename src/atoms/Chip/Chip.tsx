@@ -33,7 +33,7 @@ const Chip = ({
 	);
 
 	const onChipSelected = () => {
-		if (selectable) {
+		if (selectable && !clickable) {
 			setSelected(!selected);
 			onChipSelectUnselect?.(label, !selected);
 		}
@@ -48,7 +48,13 @@ const Chip = ({
 		<button
 			key={chipKey}
 			className={classes}
-			onClick={selectable ? onChipSelected : clickable ? onClick : () => {}}
+			onClick={
+				selectable && !clickable
+					? onChipSelected
+					: clickable && !selectable
+						? onClick
+						: () => {}
+			}
 		>
 			<Typography {...props}>{label}</Typography>
 			{DeleteIcon && clickable && !selectable && (

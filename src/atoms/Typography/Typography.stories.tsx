@@ -3,7 +3,7 @@ import Typography from './Typography';
 import React from 'react';
 const meta: Meta<typeof Typography> = {
 	component: Typography,
-	title: 'Components/atoms/Typography',
+	title: 'Components/Atoms/Typography',
 	argTypes: {
 		styling: {
 			options: [

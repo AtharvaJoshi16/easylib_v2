@@ -9,6 +9,7 @@ export interface ButtonProps
 	buttonVariant?: 'text-on-dark' | 'text-on-light' | 'contained' | 'outlined';
 	rounded?: boolean;
 	color?: Colors;
+	floating?: boolean;
 	Icon?: React.ElementType;
 	size?: 'x-small' | 'small' | 'medium' | 'large';
 	iconPosition?: 'left' | 'right';
