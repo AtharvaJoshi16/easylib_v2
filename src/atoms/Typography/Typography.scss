@@ -1,59 +1,59 @@
-@import "../../globals/index.scss";
+@import '../../globals/index.scss';
 
 .typography {
-  font-family: var(--rubik-regular);
-  color: $text-primary;
-  &--wrap {
-    text-wrap: wrap;
-  }
-  &--nowrap {
-    text-wrap: nowrap;
-  }
-  &--underline {
-    text-decoration: underline;
-  }
-  &--strike {
-    text-decoration: line-through;
-  }
-  &--italic {
-    font-style: italic;
-  }
-  &--styling {
-    &--light {
-      font-family: var(--rubik-light);
-    }
-    &--regular {
-      font-family: var(--rubik-regular);
-    }
-    &--medium {
-      font-family: var(--rubik-medium);
-    }
-    &--bold {
-      font-family: var(--rubik-bold);
-    }
-    &--semibold {
-      font-family: var(--rubik-semibold);
-    }
-    &--extrabold {
-      font-family: var(--rubik-extrabold);
-    }
-    &--italic {
-      font-family: var(--rubik-italic);
-    }
-    &--light-italic {
-      font-family: var(--rubik-light-italic);
-    }
-    &--medium-italic {
-      font-family: var(--rubik-medium-italic);
-    }
-    &--bold-italic {
-      font-family: var(--rubik-bold-italic);
-    }
-    &--semibold-italic {
-      font-family: var(--rubik-semibold-italic);
-    }
-    &--extrabold-italic {
-      font-family: var(--rubik-extrabold-italic);
-    }
-  }
+	font-family: var(--rubik-regular);
+	color: $text-primary;
+	&--wrap {
+		text-wrap: wrap;
+	}
+	&--nowrap {
+		text-wrap: nowrap;
+	}
+	&--underline {
+		text-decoration: underline;
+	}
+	&--strike {
+		text-decoration: line-through;
+	}
+	&--italic {
+		font-style: italic;
+	}
+	&--styling {
+		&--light {
+			font-family: var(--rubik-light);
+		}
+		&--regular {
+			font-family: var(--rubik-regular);
+		}
+		&--medium {
+			font-family: var(--rubik-medium);
+		}
+		&--bold {
+			font-family: var(--rubik-bold);
+		}
+		&--semibold {
+			font-family: var(--rubik-semibold);
+		}
+		&--extrabold {
+			font-family: var(--rubik-extrabold);
+		}
+		&--italic {
+			font-family: var(--rubik-italic);
+		}
+		&--light-italic {
+			font-family: var(--rubik-light-italic);
+		}
+		&--medium-italic {
+			font-family: var(--rubik-medium-italic);
+		}
+		&--bold-italic {
+			font-family: var(--rubik-bold-italic);
+		}
+		&--semibold-italic {
+			font-family: var(--rubik-semibold-italic);
+		}
+		&--extrabold-italic {
+			font-family: var(--rubik-extrabold-italic);
+		}
+	}
 }

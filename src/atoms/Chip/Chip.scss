@@ -1,216 +1,216 @@
-@import "../../globals/index.scss";
+@import '../../globals/index.scss';
 
 @mixin contained-chip-selected($bgcolor) {
-  &.chip--selected {
-    background-color: $bgcolor;
-  }
+	&.chip--selected {
+		background-color: $bgcolor;
+	}
 }
 
 @mixin outlined-chip-selected($bgcolor) {
-  &.chip--selected {
-    background-color: $bgcolor;
-    @include override-font-color(white);
-    svg {
-      stroke: white;
-    }
-  }
+	&.chip--selected {
+		background-color: $bgcolor;
+		@include override-font-color(white);
+		svg {
+			stroke: white;
+		}
+	}
 }
 
 .chip {
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
+	border-radius: 30px;
+	border: none;
+	cursor: pointer;
 
-  &--with-icon {
-    display: flex;
-    align-items: center;
-  }
+	&--with-icon {
+		display: flex;
+		align-items: center;
+	}
 
-  @include focusVisible();
+	@include focusVisible();
 
-  span {
-    display: inherit;
-  }
+	span {
+		display: inherit;
+	}
 
-  &--small {
-    padding: 4px 6px;
-    @include override-font-size(12px);
-    gap: 4px;
-    svg {
-      width: 12px;
-      height: 12px;
-      stroke-width: 2.5px;
-    }
-  }
-  &--medium {
-    padding: 6px 8px;
-    @include override-font-size(14px);
-    gap: 6px;
-    svg {
-      width: 14px;
-      height: 14px;
-      stroke-width: 2.5px;
-    }
-  }
-  &--large {
-    padding: 8px 10px;
-    @include override-font-size(16px);
-    gap: 6px;
-    svg {
-      width: 16px;
-      height: 16px;
-      stroke-width: 2.5px;
-    }
-  }
-  &--x-large {
-    padding: 10px 12px;
-    @include override-font-size(18px);
-    gap: 6px;
-    svg {
-      width: 18px;
-      height: 18px;
-      stroke-width: 2.5px;
-    }
-  }
-  &--xx-large {
-    padding: 12px 14px;
-    @include override-font-size(20px);
-    gap: 10px;
-    svg {
-      width: 20px;
-      height: 20px;
-      stroke-width: 2.5px;
-    }
-  }
+	&--small {
+		padding: 4px 6px;
+		@include override-font-size(12px);
+		gap: 4px;
+		svg {
+			width: 12px;
+			height: 12px;
+			stroke-width: 2.5px;
+		}
+	}
+	&--medium {
+		padding: 6px 8px;
+		@include override-font-size(14px);
+		gap: 6px;
+		svg {
+			width: 14px;
+			height: 14px;
+			stroke-width: 2.5px;
+		}
+	}
+	&--large {
+		padding: 8px 10px;
+		@include override-font-size(16px);
+		gap: 6px;
+		svg {
+			width: 16px;
+			height: 16px;
+			stroke-width: 2.5px;
+		}
+	}
+	&--x-large {
+		padding: 10px 12px;
+		@include override-font-size(18px);
+		gap: 6px;
+		svg {
+			width: 18px;
+			height: 18px;
+			stroke-width: 2.5px;
+		}
+	}
+	&--xx-large {
+		padding: 12px 14px;
+		@include override-font-size(20px);
+		gap: 10px;
+		svg {
+			width: 20px;
+			height: 20px;
+			stroke-width: 2.5px;
+		}
+	}
 
-  &--contained {
-    @include override-font-color(white);
-    svg {
-      stroke: white;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    &--primary {
-      background-color: $primary-600;
-      @include contained-chip-selected($primary-900);
-    }
-    &--secondary {
-      background-color: $secondary-600;
-      @include contained-chip-selected($secondary-900);
-    }
-    &--tertiary {
-      background-color: $tertiary-600;
-      @include contained-chip-selected($tertiary-900);
-    }
-    &--success {
-      background-color: $green-600;
-      @include contained-chip-selected($green-900);
-    }
-    &--error {
-      background-color: $red-600;
-      @include contained-chip-selected($red-900);
-    }
-    &--warning {
-      background-color: $yellow-600;
-      @include contained-chip-selected($yellow-900);
-    }
-    &--grey {
-      background-color: $grey-500;
-      @include contained-chip-selected($grey-900);
-    }
-    &--light {
-      background-color: white;
-      @include override-font-color($text-primary);
-      @include contained-chip-selected($grey-300);
-      svg {
-        stroke: $text-primary;
-      }
-    }
-    &--dark {
-      background-color: $grey-900;
-      @include contained-chip-selected($grey-700);
-    }
-  }
+	&--contained {
+		@include override-font-color(white);
+		svg {
+			stroke: white;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		&--primary {
+			background-color: $primary-600;
+			@include contained-chip-selected($primary-900);
+		}
+		&--secondary {
+			background-color: $secondary-600;
+			@include contained-chip-selected($secondary-900);
+		}
+		&--tertiary {
+			background-color: $tertiary-600;
+			@include contained-chip-selected($tertiary-900);
+		}
+		&--success {
+			background-color: $green-600;
+			@include contained-chip-selected($green-900);
+		}
+		&--error {
+			background-color: $red-600;
+			@include contained-chip-selected($red-900);
+		}
+		&--warning {
+			background-color: $yellow-600;
+			@include contained-chip-selected($yellow-900);
+		}
+		&--grey {
+			background-color: $grey-500;
+			@include contained-chip-selected($grey-900);
+		}
+		&--light {
+			background-color: white;
+			@include override-font-color($text-primary);
+			@include contained-chip-selected($grey-300);
+			svg {
+				stroke: $text-primary;
+			}
+		}
+		&--dark {
+			background-color: $grey-900;
+			@include contained-chip-selected($grey-700);
+		}
+	}
 
-  &--outlined {
-    svg {
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    background-color: transparent;
-    border: 1.5px solid transparent;
-    &--primary {
-      border-color: $primary-600;
-      @include override-font-color($primary-600);
-      @include outlined-chip-selected($primary-900);
-      svg {
-        stroke: $primary-600;
-      }
-    }
-    &--secondary {
-      border-color: $secondary-600;
-      @include outlined-chip-selected($secondary-900);
-      @include override-font-color($secondary-600);
-      svg {
-        stroke: $secondary-600;
-      }
-    }
-    &--tertiary {
-      border-color: $tertiary-600;
-      @include outlined-chip-selected($tertiary-900);
-      @include override-font-color($tertiary-600);
-      svg {
-        stroke: $tertiary-600;
-      }
-    }
-    &--success {
-      border-color: $green-600;
-      @include outlined-chip-selected($green-900);
-      @include override-font-color($green-600);
-      svg {
-        stroke: $green-600;
-      }
-    }
-    &--error {
-      border-color: $red-600;
-      @include outlined-chip-selected($red-900);
-      @include override-font-color($red-600);
-      svg {
-        stroke: $red-600;
-      }
-    }
-    &--warning {
-      border-color: $yellow-600;
-      @include outlined-chip-selected($yellow-900);
-      @include override-font-color($yellow-600);
-      svg {
-        stroke: $yellow-600;
-      }
-    }
-    &--grey {
-      border-color: $grey-500;
-      @include outlined-chip-selected($grey-900);
-      @include override-font-color($grey-500);
-      svg {
-        stroke: $grey-500;
-      }
-    }
-    &--light {
-      border-color: white;
-      @include override-font-color($text-primary);
-      @include outlined-chip-selected($grey-300);
-      svg {
-        stroke: $text-primary;
-      }
-    }
-    &--dark {
-      border-color: $grey-900;
-      @include outlined-chip-selected($grey-700);
-      svg {
-        stroke: $grey-900;
-      }
-    }
-  }
+	&--outlined {
+		svg {
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		background-color: transparent;
+		border: 1.5px solid transparent;
+		&--primary {
+			border-color: $primary-600;
+			@include override-font-color($primary-600);
+			@include outlined-chip-selected($primary-900);
+			svg {
+				stroke: $primary-600;
+			}
+		}
+		&--secondary {
+			border-color: $secondary-600;
+			@include outlined-chip-selected($secondary-900);
+			@include override-font-color($secondary-600);
+			svg {
+				stroke: $secondary-600;
+			}
+		}
+		&--tertiary {
+			border-color: $tertiary-600;
+			@include outlined-chip-selected($tertiary-900);
+			@include override-font-color($tertiary-600);
+			svg {
+				stroke: $tertiary-600;
+			}
+		}
+		&--success {
+			border-color: $green-600;
+			@include outlined-chip-selected($green-900);
+			@include override-font-color($green-600);
+			svg {
+				stroke: $green-600;
+			}
+		}
+		&--error {
+			border-color: $red-600;
+			@include outlined-chip-selected($red-900);
+			@include override-font-color($red-600);
+			svg {
+				stroke: $red-600;
+			}
+		}
+		&--warning {
+			border-color: $yellow-600;
+			@include outlined-chip-selected($yellow-900);
+			@include override-font-color($yellow-600);
+			svg {
+				stroke: $yellow-600;
+			}
+		}
+		&--grey {
+			border-color: $grey-500;
+			@include outlined-chip-selected($grey-900);
+			@include override-font-color($grey-500);
+			svg {
+				stroke: $grey-500;
+			}
+		}
+		&--light {
+			border-color: white;
+			@include override-font-color($text-primary);
+			@include outlined-chip-selected($grey-300);
+			svg {
+				stroke: $text-primary;
+			}
+		}
+		&--dark {
+			border-color: $grey-900;
+			@include outlined-chip-selected($grey-700);
+			svg {
+				stroke: $grey-900;
+			}
+		}
+	}
 }

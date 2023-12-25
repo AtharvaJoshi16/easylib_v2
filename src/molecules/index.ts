@@ -1,1 +1,1 @@
-export { default as Chipgroup } from "./ChipGroup";
+export { default as Chipgroup } from './ChipGroup';
