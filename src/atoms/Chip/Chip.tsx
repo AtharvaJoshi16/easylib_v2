@@ -1,50 +1,63 @@
-import classNames from "classnames";
-import Typography from "../Typography";
-import { ChipProps } from "./Chip.model";
-import React, { useState } from "react";
-import "./Chip.scss";
+import classNames from 'classnames';
+import Typography from '../Typography';
+import { ChipProps } from './Chip.model';
+import React, { useState } from 'react';
+import './Chip.scss';
 
 const Chip = ({
-  label,
-  className,
-  color = "primary",
-  chipVariant = "contained",
-  size = "medium",
-  DeleteIcon,
-  chipKey,
-  onDelete,
-  onChipSelectUnselect,
-  ...props
+	label,
+	className,
+	color = 'primary',
+	chipVariant = 'contained',
+	size = 'medium',
+	DeleteIcon,
+	clickable = true,
+	selectable = false,
+	defaultSelected = false,
+	chipKey,
+	onDelete,
+	onChipSelectUnselect,
+	onClick,
+	...props
 }: ChipProps) => {
-  const [selected, setSelected] = useState<boolean>(false);
-  const classes = classNames(
-    className,
-    "chip",
-    { "chip--with-icon": DeleteIcon },
-    `chip--${chipVariant}`,
-    `chip--${chipVariant}--${color}`,
-    `chip--${size}`,
-    { "chip--selected": selected }
-  );
+	const [selected, setSelected] = useState<boolean>(defaultSelected);
 
-  const onChipSelected = () => {
-    setSelected(!selected);
-    onChipSelectUnselect?.(label, selected);
-  };
+	const classes = classNames(
+		className,
+		'chip',
+		{ 'chip--with-icon': DeleteIcon },
+		`chip--${chipVariant}`,
+		`chip--${chipVariant}--${color}`,
+		`chip--${size}`,
+		{ 'chip--selected': selected && selectable }
+	);
 
-  const onChipDelete = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation();
-    onDelete?.(label);
-  };
+	const onChipSelected = () => {
+		if (selectable) {
+			setSelected(!selected);
+			onChipSelectUnselect?.(label, !selected);
+		}
+	};
 
-  return (
-    <button key={chipKey} className={classes} onClick={onChipSelected}>
-      <Typography {...props}>{label}</Typography>
-      <span onClick={(e) => onChipDelete(e)}>
-        {DeleteIcon && <DeleteIcon />}
-      </span>
-    </button>
-  );
+	const onChipDelete = (event: React.MouseEvent<HTMLElement>) => {
+		event.stopPropagation();
+		onDelete?.(label);
+	};
+
+	return (
+		<button
+			key={chipKey}
+			className={classes}
+			onClick={selectable ? onChipSelected : clickable ? onClick : () => {}}
+		>
+			<Typography {...props}>{label}</Typography>
+			{DeleteIcon && clickable && !selectable && (
+				<span onClick={(e) => onChipDelete(e)}>
+					<DeleteIcon />
+				</span>
+			)}
+		</button>
+	);
 };
 
 export default Chip;

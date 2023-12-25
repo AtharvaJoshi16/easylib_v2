@@ -140,7 +140,7 @@
       }
     }
     background-color: transparent;
-    border: 2px solid transparent;
+    border: 1.5px solid transparent;
     &--primary {
       border-color: $primary-600;
       @include override-font-color($primary-600);
