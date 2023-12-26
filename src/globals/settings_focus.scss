@@ -4,3 +4,8 @@
 		outline-offset: 2px;
 	}
 }
+
+@mixin Focus() {
+	outline: 2px solid $primary-900;
+	outline-offset: 2px;
+}

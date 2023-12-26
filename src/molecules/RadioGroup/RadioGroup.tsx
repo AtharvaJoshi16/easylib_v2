@@ -9,6 +9,8 @@ const RadioGroup = ({
 	alignment = 'horizontal',
 	initialSelected,
 	className,
+	icon,
+	iconWithLabel = false,
 	...props
 }: RadioGroupProps) => {
 	const classes = classNames(
@@ -31,24 +33,50 @@ const RadioGroup = ({
 		<div className={classes}>
 			{options?.map((option, index) => (
 				<div className="radio-group__item" key={`${option.value}-${index}`}>
-					<input
-						type="radio"
-						id={option.id}
-						value={option.value}
-						disabled={option.disabled}
-						onChange={(e) => onChange(e, option)}
-						checked={selected === option.value}
-						{...props}
-					/>
-					<span className="radio-group__input"></span>
-					<div className="radio-group__item__texts">
-						<label key={`${option.id}-${index}`} htmlFor={option.id}>
-							<Typography styling="bold">{option.value}</Typography>
-						</label>
-						<Typography className="radio-group__item__texts__helper">
-							{option.helperText}
-						</Typography>
-					</div>
+					<label
+						className="radio-group__item__label"
+						key={`${option.id}-${index}`}
+						htmlFor={option.id}
+					>
+						<input
+							type="radio"
+							key={`${option.value}-${index}`}
+							id={option.id}
+							value={option.value}
+							disabled={option.disabled}
+							onChange={(e) => onChange(e, option)}
+							checked={selected === option.value}
+							{...props}
+						/>
+						<span className="radio-group__input"></span>
+
+						{iconWithLabel ? (
+							<div className="radio-grop__item__with-label">
+								{icon}
+								<div className="radio-group__item__with-label__texts">
+									<Typography styling="bold">{option.value}</Typography>
+
+									<Typography className="radio-group__item__with-label__texts__helper">
+										{option.helperText}
+									</Typography>
+								</div>
+							</div>
+						) : (
+							<div className="radio-group__item__texts">
+								{icon ? (
+									icon
+								) : (
+									<>
+										<Typography styling="bold">{option.value}</Typography>
+
+										<Typography className="radio-group__item__texts__helper">
+											{option.helperText}
+										</Typography>
+									</>
+								)}
+							</div>
+						)}
+					</label>
 				</div>
 			))}
 		</div>

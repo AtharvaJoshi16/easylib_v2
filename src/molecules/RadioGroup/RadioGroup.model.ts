@@ -7,6 +7,8 @@ export interface RadioGroupProps extends InputHTMLAttributes<HTMLInputElement> {
 	onOptionChange?: (selected: Option) => void;
 	alignment?: 'vertical' | 'horizontal';
 	className?: string;
+	iconWithLabel?: boolean;
+	icon?: React.ReactNode;
 }
 
 export interface Option {

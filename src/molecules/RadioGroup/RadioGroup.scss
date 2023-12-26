@@ -12,19 +12,42 @@
 	}
 
 	&__item {
-		display: flex;
-		align-items: center;
 		position: relative;
 		margin-left: 20px;
 		margin-right: 20px;
 
+		&__label {
+			display: flex;
+			align-items: center;
+		}
+
 		input {
 			position: absolute;
 			opacity: 0;
-			cursor: pointer;
 		}
 
-		&__texts {
+		&__with-label {
+			display: flex;
+			align-items: center;
+			// &__texts {
+			// 	display: flex;
+			// 	flex-direction: column;
+			// 	gap: 4px;
+			// 	position: relative;
+			// 	left: 20px;
+			// 	&__helper {
+			// 		font-size: 14px;
+			// 		letter-spacing: 0.3px;
+			// 	}
+			// 	&:hover,
+			// 	label:hover {
+			// 		cursor: pointer;
+			// 	}
+			// }
+		}
+
+		&__texts,
+		.radio-group__item__with-label__texts {
 			display: flex;
 			flex-direction: column;
 			gap: 4px;
@@ -34,29 +57,39 @@
 				font-size: 14px;
 				letter-spacing: 0.3px;
 			}
+			&:hover,
+			label:hover {
+				cursor: pointer;
+			}
 		}
 
 		&:hover input ~ .radio-group__input {
 			background-color: $primary-100;
+			cursor: pointer;
 		}
 
 		input:checked ~ .radio-group__input {
-			background-color: $primary-300;
+			background-color: white;
 		}
 
-		input:checked ~ .radio-group__input::after {
+		input:checked ~ .radio-group__input:after {
 			display: block;
 		}
 
-		&:after {
+		input:focus-visible ~ .radio-group__input {
+			@include Focus();
+		}
+
+		.radio-group__input:after {
 			content: '';
 			display: none;
-			top: 9px;
-			left: 9px;
-			width: 8px;
-			height: 8px;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 60%;
+			height: 60%;
 			border-radius: 50%;
-			background-color: red;
+			background-color: $primary-800;
 		}
 	}
 	&__input {
@@ -68,7 +101,7 @@
 		border-radius: 50%;
 		border: 2px solid $primary-900;
 
-		&::after {
+		&:after {
 			content: '';
 			position: absolute;
 			display: none;
