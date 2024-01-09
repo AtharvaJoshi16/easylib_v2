@@ -29,21 +29,6 @@
 		&__with-label {
 			display: flex;
 			align-items: center;
-			// &__texts {
-			// 	display: flex;
-			// 	flex-direction: column;
-			// 	gap: 4px;
-			// 	position: relative;
-			// 	left: 20px;
-			// 	&__helper {
-			// 		font-size: 14px;
-			// 		letter-spacing: 0.3px;
-			// 	}
-			// 	&:hover,
-			// 	label:hover {
-			// 		cursor: pointer;
-			// 	}
-			// }
 		}
 
 		&__texts,
@@ -69,7 +54,8 @@
 		}
 
 		input:checked ~ .radio-group__input {
-			background-color: white;
+			background-color: $primary-800;
+			border: 2px solid $primary-800;
 		}
 
 		input:checked ~ .radio-group__input:after {
@@ -86,10 +72,10 @@
 			left: 50%;
 			top: 50%;
 			transform: translate(-50%, -50%);
-			width: 60%;
-			height: 60%;
+			width: 40%;
+			height: 40%;
 			border-radius: 50%;
-			background-color: $primary-800;
+			background-color: white;
 		}
 	}
 	&__input {
