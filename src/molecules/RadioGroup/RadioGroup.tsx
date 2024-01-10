@@ -11,6 +11,7 @@ const RadioGroup = ({
 	className,
 	icon,
 	iconWithLabel = false,
+	warningText,
 	...props
 }: RadioGroupProps) => {
 	const classes = classNames(
@@ -54,7 +55,7 @@ const RadioGroup = ({
 							<div className="radio-grop__item__with-label">
 								{icon}
 								<div className="radio-group__item__with-label__texts">
-									<Typography styling="bold">{option.value}</Typography>
+									<Typography styling="semibold">{option.value}</Typography>
 
 									<Typography className="radio-group__item__with-label__texts__helper">
 										{option.helperText}
@@ -67,7 +68,7 @@ const RadioGroup = ({
 									icon
 								) : (
 									<>
-										<Typography styling="bold">{option.value}</Typography>
+										<Typography styling="semibold">{option.value}</Typography>
 
 										<Typography className="radio-group__item__texts__helper">
 											{option.helperText}
@@ -79,6 +80,11 @@ const RadioGroup = ({
 					</label>
 				</div>
 			))}
+			{warningText && (
+				<Typography className="radio-group__warning-text">
+					{warningText}
+				</Typography>
+			)}
 		</div>
 	);
 };

@@ -24,6 +24,7 @@ export const RadioDefault: Story = {
 	args: {
 		initialSelected: 'Option 2',
 		onOptionChange: handleOptionChange,
+		warningText: 'Demo warning Text',
 		options: [
 			{
 				value: 'Option 1',
