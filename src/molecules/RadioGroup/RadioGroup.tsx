@@ -13,6 +13,7 @@ const RadioGroup = ({
 	iconWithLabel = false,
 	labelFirst = false,
 	warningText,
+	boldHeading = false,
 	full = false,
 	...props
 }: RadioGroupProps) => {
@@ -92,7 +93,7 @@ const RadioGroup = ({
 												<div className="radio-group__item__with-label__texts">
 													<Typography
 														className={optionHeadingClasses}
-														styling="semibold"
+														styling={boldHeading ? 'semibold' : 'regular'}
 													>
 														{option.value}
 													</Typography>
@@ -109,7 +110,7 @@ const RadioGroup = ({
 												<div className="radio-group__item__with-label__texts">
 													<Typography
 														className={optionHeadingClasses}
-														styling="semibold"
+														styling={boldHeading ? 'semibold' : 'regular'}
 													>
 														{option.value}
 													</Typography>
@@ -129,7 +130,7 @@ const RadioGroup = ({
 											<>
 												<Typography
 													className={optionHeadingClasses}
-													styling="semibold"
+													styling={boldHeading ? 'semibold' : 'regular'}
 												>
 													{option.value}
 												</Typography>

@@ -11,6 +11,7 @@ export interface RadioGroupProps extends InputHTMLAttributes<HTMLInputElement> {
 	iconWithLabel?: boolean;
 	icon?: React.ReactNode;
 	labelFirst?: boolean;
+	boldHeading?: boolean;
 }
 
 export interface Option {

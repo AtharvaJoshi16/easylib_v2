@@ -109,8 +109,9 @@
 			display: block;
 		}
 
-		input:focus-visible ~ .radio-group__input {
-			@include Focus();
+		input:focus ~ .radio-group__input {
+			outline: 2px solid $primary-900;
+			outline-offset: 2px;
 		}
 
 		.radio-group__input:after,
