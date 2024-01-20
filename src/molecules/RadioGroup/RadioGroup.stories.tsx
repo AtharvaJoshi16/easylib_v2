@@ -30,6 +30,7 @@ export const RadioDefault: Story = {
 				value: 'Option 1',
 				helperText: 'This is helper text',
 				id: '1',
+				warning: true,
 			},
 			{
 				value: 'Option 2',

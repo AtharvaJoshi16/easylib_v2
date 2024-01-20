@@ -48,14 +48,24 @@
 			}
 		}
 
-		&:hover input ~ .radio-group__input {
-			background-color: $primary-100;
+		&:hover input ~ .radio-group__input--warning {
+			background-color: $red-100;
 			cursor: pointer;
 		}
 
-		input:checked ~ .radio-group__input {
-			background-color: $primary-800;
-			border: 2px solid $primary-800;
+		input:checked ~ .radio-group__input--warning {
+			background-color: $red-800;
+			border: 2px solid $red-800;
+		}
+
+		&:hover input ~ .radio-group__input--warning {
+			background-color: $red-100;
+			cursor: pointer;
+		}
+
+		input:checked ~ .radio-group__input--warning {
+			background-color: $red-800;
+			border: 2px solid $red-800;
 		}
 
 		input:checked ~ .radio-group__input:after {
@@ -92,12 +102,16 @@
 			position: absolute;
 			display: none;
 		}
+
+		&--warning {
+			border-color: $red-900;
+		}
 	}
 
 	&__warning-text {
 		color: $red-700 !important;
 		font-size: 14px;
 		letter-spacing: 0.3px;
-		margin-left: 20px;
+		margin: 20px;
 	}
 }

@@ -16,4 +16,5 @@ export interface Option {
 	helperText?: string;
 	id: string;
 	disabled?: boolean;
+	warning?: boolean;
 }

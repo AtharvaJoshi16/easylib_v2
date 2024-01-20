@@ -19,6 +19,7 @@ const RadioGroup = ({
 		'radio-group',
 		`radio-group--${alignment}`
 	);
+
 	const [selected, setSelected] = useState<string>(
 		initialSelected ?? options[0]?.value
 	);
@@ -31,61 +32,70 @@ const RadioGroup = ({
 		onOptionChange?.(option);
 	};
 	return (
-		<div className={classes}>
-			{options?.map((option, index) => (
-				<div className="radio-group__item" key={`${option.value}-${index}`}>
-					<label
-						className="radio-group__item__label"
-						key={`${option.id}-${index}`}
-						htmlFor={option.id}
-					>
-						<input
-							type="radio"
-							key={`${option.value}-${index}`}
-							id={option.id}
-							value={option.value}
-							disabled={option.disabled}
-							onChange={(e) => onChange(e, option)}
-							checked={selected === option.value}
-							{...props}
-						/>
-						<span className="radio-group__input"></span>
+		<>
+			<div className={classes}>
+				{options?.map((option, index) => {
+					const radioInputClasses = classNames('radio-group__input', {
+						'radio-group__input--warning': option?.warning,
+					});
+					return (
+						<div className="radio-group__item" key={`${option.value}-${index}`}>
+							<label
+								className="radio-group__item__label"
+								key={`${option.id}-${index}`}
+								htmlFor={option.id}
+							>
+								<input
+									type="radio"
+									key={`${option.value}-${index}`}
+									id={option.id}
+									value={option.value}
+									disabled={option.disabled}
+									onChange={(e) => onChange(e, option)}
+									checked={selected === option.value}
+									{...props}
+								/>
+								<span className={radioInputClasses}></span>
 
-						{iconWithLabel ? (
-							<div className="radio-grop__item__with-label">
-								{icon}
-								<div className="radio-group__item__with-label__texts">
-									<Typography styling="semibold">{option.value}</Typography>
+								{iconWithLabel ? (
+									<div className="radio-grop__item__with-label">
+										{icon}
+										<div className="radio-group__item__with-label__texts">
+											<Typography styling="semibold">{option.value}</Typography>
 
-									<Typography className="radio-group__item__with-label__texts__helper">
-										{option.helperText}
-									</Typography>
-								</div>
-							</div>
-						) : (
-							<div className="radio-group__item__texts">
-								{icon ? (
-									icon
+											<Typography className="radio-group__item__with-label__texts__helper">
+												{option.helperText}
+											</Typography>
+										</div>
+									</div>
 								) : (
-									<>
-										<Typography styling="semibold">{option.value}</Typography>
+									<div className="radio-group__item__texts">
+										{icon ? (
+											icon
+										) : (
+											<>
+												<Typography styling="semibold">
+													{option.value}
+												</Typography>
 
-										<Typography className="radio-group__item__texts__helper">
-											{option.helperText}
-										</Typography>
-									</>
+												<Typography className="radio-group__item__texts__helper">
+													{option.helperText}
+												</Typography>
+											</>
+										)}
+									</div>
 								)}
-							</div>
-						)}
-					</label>
-				</div>
-			))}
+							</label>
+						</div>
+					);
+				})}
+			</div>
 			{warningText && (
 				<Typography className="radio-group__warning-text">
 					{warningText}
 				</Typography>
 			)}
-		</div>
+		</>
 	);
 };
 
