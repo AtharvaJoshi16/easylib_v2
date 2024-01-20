@@ -2,6 +2,7 @@ import { InputHTMLAttributes } from 'react';
 
 export interface RadioGroupProps extends InputHTMLAttributes<HTMLInputElement> {
 	warningText?: string;
+	full?: boolean;
 	options: Option[];
 	initialSelected?: string;
 	onOptionChange?: (selected: Option) => void;
@@ -9,6 +10,7 @@ export interface RadioGroupProps extends InputHTMLAttributes<HTMLInputElement> {
 	className?: string;
 	iconWithLabel?: boolean;
 	icon?: React.ReactNode;
+	labelFirst?: boolean;
 }
 
 export interface Option {

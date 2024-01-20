@@ -11,14 +11,21 @@ const RadioGroup = ({
 	className,
 	icon,
 	iconWithLabel = false,
+	labelFirst = false,
 	warningText,
+	full = false,
 	...props
 }: RadioGroupProps) => {
 	const classes = classNames(
 		className,
 		'radio-group',
-		`radio-group--${alignment}`
+		`radio-group--${alignment}`,
+		{ 'radio-group--full': full }
 	);
+
+	const warningTextClasses = classNames('radio-group__warning-text', {
+		'radio-group__warning-text--fit': !full,
+	});
 
 	const [selected, setSelected] = useState<string>(
 		initialSelected ?? options[0]?.value
@@ -38,6 +45,27 @@ const RadioGroup = ({
 					const radioInputClasses = classNames('radio-group__input', {
 						'radio-group__input--warning': option?.warning,
 					});
+
+					const helperTextClasses = classNames(
+						'radio-group__item__texts__helper',
+						{ 'radio-group__item__texts__helper--warning': option?.warning },
+						{ 'radio-group__item__texts__helper--fit': !full }
+					);
+
+					const helperTextWithLabelClasses = classNames(
+						'radio-group__item__with-label__texts__helper',
+						{
+							'radio-group__item__with-label__texts__helper--warning':
+								option?.warning,
+						},
+						{ 'radio-group__item__with-label__texts__helper--fit': !full }
+					);
+
+					const optionHeadingClasses = classNames(
+						'radio-group__item__texts__main',
+						{ 'radio-group__item__texts__main--warning': option?.warning },
+						{ 'radio-group__item__texts__main--fit': !full }
+					);
 					return (
 						<div className="radio-group__item" key={`${option.value}-${index}`}>
 							<label
@@ -58,15 +86,40 @@ const RadioGroup = ({
 								<span className={radioInputClasses}></span>
 
 								{iconWithLabel ? (
-									<div className="radio-grop__item__with-label">
-										{icon}
-										<div className="radio-group__item__with-label__texts">
-											<Typography styling="semibold">{option.value}</Typography>
+									<div className="radio-group__item__with-label">
+										{labelFirst ? (
+											<div className="radio-group__item__with-label__label-first">
+												<div className="radio-group__item__with-label__texts">
+													<Typography
+														className={optionHeadingClasses}
+														styling="semibold"
+													>
+														{option.value}
+													</Typography>
 
-											<Typography className="radio-group__item__with-label__texts__helper">
-												{option.helperText}
-											</Typography>
-										</div>
+													<Typography className={helperTextWithLabelClasses}>
+														{option.helperText}
+													</Typography>
+												</div>
+												{icon}
+											</div>
+										) : (
+											<div className="radio-group__item__with-label__icon-first">
+												{icon}
+												<div className="radio-group__item__with-label__texts">
+													<Typography
+														className={optionHeadingClasses}
+														styling="semibold"
+													>
+														{option.value}
+													</Typography>
+
+													<Typography className={helperTextWithLabelClasses}>
+														{option.helperText}
+													</Typography>
+												</div>
+											</div>
+										)}
 									</div>
 								) : (
 									<div className="radio-group__item__texts">
@@ -74,11 +127,14 @@ const RadioGroup = ({
 											icon
 										) : (
 											<>
-												<Typography styling="semibold">
+												<Typography
+													className={optionHeadingClasses}
+													styling="semibold"
+												>
 													{option.value}
 												</Typography>
 
-												<Typography className="radio-group__item__texts__helper">
+												<Typography className={helperTextClasses}>
 													{option.helperText}
 												</Typography>
 											</>
@@ -91,9 +147,7 @@ const RadioGroup = ({
 				})}
 			</div>
 			{warningText && (
-				<Typography className="radio-group__warning-text">
-					{warningText}
-				</Typography>
+				<Typography className={warningTextClasses}>{warningText}</Typography>
 			)}
 		</>
 	);

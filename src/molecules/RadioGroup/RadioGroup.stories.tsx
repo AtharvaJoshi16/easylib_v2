@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import RadioGroup from './RadioGroup';
 import { Option } from './RadioGroup.model';
+import { CreditCard } from 'lucide-react';
 
 const meta: Meta<typeof RadioGroup> = {
 	component: RadioGroup,
@@ -36,6 +37,7 @@ export const RadioDefault: Story = {
 				value: 'Option 2',
 				helperText: 'This is helper text',
 				id: '2',
+				warning: true,
 			},
 			{
 				value: 'Option 3',
@@ -53,5 +55,8 @@ export const RadioDefault: Story = {
 				id: '5',
 			},
 		],
+		icon: <CreditCard />,
+		iconWithLabel: true,
+		labelFirst: true,
 	},
 };
