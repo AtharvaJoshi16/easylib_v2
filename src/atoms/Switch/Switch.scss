@@ -1,70 +1,238 @@
+@import '../../globals/index.scss';
+
+@mixin variantStyles($color) {
+	.switch__label {
+		border: 2px solid $color;
+		background-color: $color;
+	}
+
+	.switch-checkbox:not(:checked) + .switch__inner {
+		border: 2px solid $color;
+	}
+
+	.switch-checkbox:not(:checked) + .switch__label .switch__toggle {
+		right: 31px;
+		background: $color;
+	}
+
+	.switch__inner::before {
+		content: '';
+		background-color: $color;
+	}
+}
+
+.container {
+	display: flex;
+	&--vertical {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	&--horizontal {
+		align-items: center;
+		gap: 20px;
+	}
+}
 .switch {
 	position: relative;
 	width: 65px;
 	display: inline-block;
 	text-align: left;
-	top: 8px;
 	&__toggle {
 		display: block;
 		width: 24px;
-		margin: 5px;
-		background: red;
+		margin: 5px 5px 5px 3px;
+		background: white;
 		position: absolute;
 		top: 0;
 		bottom: 0;
+		right: 0;
 		border-radius: 20px;
-		transition: all 0.3s ease-in 2s;
+		transition: all 0.2s ease-in-out;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		svg {
+			height: 12px;
+			width: 12px;
+			stroke: $text-primary;
+		}
+
+		&--off {
+			svg {
+				stroke: white;
+			}
+		}
 	}
 	.switch-checkbox {
-		display: none;
+		opacity: 0;
+		height: 0;
+		position: absolute;
 	}
 
 	&__label {
 		display: block;
 		overflow: hidden;
 		cursor: pointer;
-		border: 2px solid red;
 		height: 30px;
 		border-radius: 20px;
+		transition: background-color 0.2s ease-in-out;
 	}
 
-	.inner {
+	&__inner {
 		display: block;
 		width: 200%;
-		background-color: red;
-		margin-left: -100%;
-		transition: margin 0.3s ease-in 2s;
-	}
-
-	.inner:before,
-	.inner:after {
-		float: left;
-		width: 50%;
-		height: 36px;
-		padding: 0;
-		line-height: 36px;
-		color: white;
-		font-weight: bold;
-		box-sizing: border-box;
-	}
-
-	.inner:before {
-		padding-left: 10px;
-		background-color: #060;
-		color: #fff;
-	}
-
-	.inner:after {
-		padding-right: 10px;
-		background-color: red;
-		color: #fff;
-		text-align: right;
-	}
-
-	.switch-checkbox:checked + .switch__label .inner {
 		margin-left: 0;
+		transition: all 0.2s ease-in-out;
+		&:before,
+		&:after {
+			content: '';
+			float: left;
+			width: 50%;
+			height: 30px;
+			border-radius: 10px;
+			padding: 0;
+			font-weight: bold;
+		}
+
+		&:before {
+			content: '';
+			padding-left: 10px;
+			background-color: $primary-300;
+		}
+
+		&:after {
+			content: '';
+			padding-right: 10px;
+		}
 	}
-	.switch-checkbox:checked + .switch__label .switch__toggle {
-		right: 0px;
+
+	.switch-checkbox:not(:checked) ~ .switch__label .switch__inner {
+		margin-left: -120%;
+	}
+
+	.switch-checkbox:not(:checked) + .switch__label {
+		background-color: white;
+	}
+
+	.switch-checkbox:focus-visible + .switch__label {
+		outline: 2px solid $primary-900;
+		outline-offset: 2px;
+	}
+
+	//variants
+	&--primary {
+		@include variantStyles($primary-300);
+	}
+
+	&--secondary {
+		@include variantStyles($secondary-300);
+	}
+
+	&--tertiary {
+		@include variantStyles($tertiary-300);
+	}
+
+	&--success {
+		@include variantStyles($green-300);
+	}
+
+	&--warning {
+		@include variantStyles($yellow-300);
+	}
+
+	&--error {
+		@include variantStyles($red-300);
+	}
+
+	&--grey {
+		@include variantStyles($grey-300);
+	}
+
+	&--dark {
+		@include variantStyles($grey-900);
+	}
+
+	//sizes
+	&--small {
+		width: 48px;
+		svg {
+			display: flex;
+			justify-content: center;
+			width: 6px;
+			height: 8px;
+		}
+		.switch__toggle {
+			width: 15px;
+		}
+
+		.switch__label {
+			height: 21px;
+		}
+
+		.switch__inner {
+			&::after,
+			::before {
+				width: 30%;
+				height: 15px;
+			}
+
+			&:before {
+				padding-left: 5px;
+			}
+
+			&:after {
+				padding-right: 5px;
+			}
+		}
+
+		.switch-checkbox:not(:checked) ~ .switch__label .switch__inner {
+			margin-left: -120%;
+		}
+
+		.switch-checkbox:not(:checked) + .switch__label .switch__toggle {
+			right: 23px;
+		}
+	}
+	&--large {
+		width: 90px;
+		svg {
+			display: flex;
+			justify-content: center;
+			width: 14px;
+			height: 14px;
+		}
+		.switch__toggle {
+			width: 32px;
+		}
+
+		.switch__label {
+			height: 38px;
+			border-radius: 40px;
+		}
+
+		.switch__inner {
+			&::after,
+			&::before {
+				width: 50%;
+				height: 40px;
+			}
+
+			&:before {
+				padding-left: 15px;
+			}
+
+			&:after {
+				padding-right: 15px;
+			}
+		}
+
+		.switch-checkbox:not(:checked) ~ .switch__label .switch__inner {
+			margin-left: -120%;
+		}
+
+		.switch-checkbox:not(:checked) + .switch__label .switch__toggle {
+			right: 47px;
+		}
 	}
 }
