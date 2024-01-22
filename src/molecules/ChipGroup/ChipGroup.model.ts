@@ -3,11 +3,12 @@ import { Colors } from '../../types/colorTypes';
 
 export interface ChipGroup {
 	children?: React.ReactElement<ChipGroup>[];
-	chips: ChipProps[];
+	chipList: ChipProps[];
 	multiSelect?: boolean;
-	getSelected?: (chips?: string[] | string) => void;
-	getAll?: (chips: string[]) => void;
-	deleteIcon?: React.ElementType;
+	clickable?: boolean;
+	getSelected?: (chips?: ChipProps[]) => void;
+	onChipClick?: (chipKey: string) => void;
+	deleteIcon?: JSX.Element;
 	chipVariant?: 'contained' | 'outlined';
 	color?: Colors;
 	size?: 'small' | 'medium' | 'large' | 'x-large' | 'xx-large';

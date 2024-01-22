@@ -5,48 +5,52 @@ import './ChipGroup.scss';
 import { ChipProps } from '../../atoms/Chip/Chip.model';
 
 const ChipGroup = ({
-	chips,
+	chipList,
 	deleteIcon,
 	chipVariant,
 	color,
 	getSelected,
 	multiSelect = false,
+	clickable = true,
+	onChipClick,
 }: ChipGroup) => {
-	const [selectedChips, setSelectedChips] = useState<string[]>([]);
-	const [selectedChip, setSelectedChip] = useState<string | null>(null);
-	const [allChips, setChips] = useState<ChipProps[]>(chips);
-	useEffect(() => {
-		setChips(chips);
-	}, []);
-	useEffect(() => {
-		getSelectedChips();
-	}, [selectedChips, selectedChip]);
+	const [selectedChips, setSelectedChips] = useState<ChipProps[]>([]);
+	const [allChips, setAllChips] = useState<ChipProps[]>(chipList);
+	const [selectedChip, setSelectedChip] = useState<ChipProps | null>(null);
 
-	const handleSelectUnselect = (label: string, selected: boolean) => {
-		if (multiSelect) {
-			setSelectedChip(label);
-		} else if (!selected) {
-			setSelectedChips((prev) => [...prev, label]);
-		} else {
-			const updatedSelected = selectedChips.filter((item) => item !== label);
-			setSelectedChips([...updatedSelected]);
+	useEffect(() => {
+		console.log(allChips);
+		getSelectedChips();
+	}, [selectedChips, selectedChip, allChips]);
+
+	const handleSelectUnselect = (chip: ChipProps) => {
+		if (!multiSelect) {
+			setSelectedChip(chip);
+		} else if (chip?.defaultSelected) {
+			setSelectedChips((chips) => [...chips, chip]);
+		} else if (!chip?.defaultSelected) {
+			let copyOfSelectedChips = [...selectedChips];
+			copyOfSelectedChips = copyOfSelectedChips?.filter(
+				(copy) => copy.chipKey !== chip.chipKey
+			);
+			setSelectedChips([...copyOfSelectedChips]);
 		}
 	};
 
-	const removeFromSelected = (label: string) => {
-		const updatedSelected = selectedChips.filter((item) => item !== label);
-		const updatedChips = allChips.filter((item) => item.label !== label);
-		setChips([...updatedChips]);
-		setSelectedChips([...updatedSelected]);
-		console.log('Deleted', label);
+	const removeFromSelected = (chipKey: string) => {
+		let copyOfAllChips = [...allChips];
+		copyOfAllChips = copyOfAllChips?.filter((copy) => copy.chipKey !== chipKey);
+		setAllChips([...copyOfAllChips]);
 	};
 
 	const getSelectedChips = () => {
 		if (multiSelect) {
 			getSelected?.(selectedChips);
+		} else if (deleteIcon) {
+			getSelected?.(allChips);
 		} else {
 			if (selectedChip) {
-				getSelected?.(selectedChip);
+				getSelected?.([selectedChip]);
 			}
 		}
 	};
@@ -58,9 +62,12 @@ const ChipGroup = ({
 					chipVariant={chipVariant}
 					color={color}
 					DeleteIcon={deleteIcon}
-					onChipSelectUnselect={handleSelectUnselect}
+					clickable={clickable}
+					onClick={onChipClick}
+					onChipAction={handleSelectUnselect}
 					onDelete={removeFromSelected}
 					key={index}
+					defaultSelected={chip?.defaultSelected}
 					{...chip}
 				/>
 			))}

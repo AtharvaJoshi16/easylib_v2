@@ -138,7 +138,7 @@
 	}
 
 	&--warning {
-		@include variantStyles($yellow-300);
+		@include variantStyles($yellow-500);
 	}
 
 	&--error {

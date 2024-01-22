@@ -6,6 +6,7 @@ import classNames from 'classnames';
 
 const Switch = ({
 	label,
+	className,
 	variant = 'primary',
 	alignment = 'horizontal',
 	size = 'medium',
@@ -21,7 +22,11 @@ const Switch = ({
 		onChange?.(event);
 	};
 
-	const containerClasses = classNames('container', `container--${alignment}`);
+	const containerClasses = classNames(
+		className,
+		'container',
+		`container--${alignment}`
+	);
 	const toggleClasses = classNames('switch__toggle', {
 		'switch__toggle--off': !checked,
 	});
@@ -41,6 +46,8 @@ const Switch = ({
 					id={switchKey}
 					onChange={handleChange}
 					checked={checked}
+					aria-label={switchKey}
+					aria-labelledby={switchKey}
 				/>
 				<label className="switch__label" htmlFor={switchKey}>
 					<span className="switch__inner" />

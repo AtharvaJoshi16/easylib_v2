@@ -3,16 +3,15 @@ import { TypographyProps } from '../Typography/Typography.model';
 
 export interface ChipProps extends TypographyProps {
 	label: string;
-	onDelete?: (label: string) => void;
-	onChipSelectUnselect?: (label: string, selected: boolean) => void;
-	DeleteIcon?: React.ElementType;
+	onDelete?: (chipKey: string) => void;
+	onChipAction?: (chip: ChipProps) => void;
+	DeleteIcon?: JSX.Element;
 	chipVariant?: 'outlined' | 'contained';
 	color?: Colors;
 	clickable?: boolean;
-	selectable?: boolean;
-	onClick?: () => void;
+	onClick?: (chipKey: string) => void;
 	defaultSelected?: boolean;
 	size?: 'small' | 'medium' | 'large' | 'x-large' | 'xx-large';
 	className?: string;
-	chipKey?: string;
+	chipKey: string;
 }

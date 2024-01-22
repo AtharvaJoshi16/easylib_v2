@@ -1,5 +1,6 @@
 export interface SwitchProps {
 	defaultChecked?: boolean;
+	className?: string;
 	label: string;
 	alignment: 'vertical' | 'horizontal';
 	switchKey: string;

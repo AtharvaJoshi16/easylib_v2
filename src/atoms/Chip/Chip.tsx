@@ -12,11 +12,10 @@ const Chip = ({
 	size = 'medium',
 	DeleteIcon,
 	clickable = true,
-	selectable = false,
 	defaultSelected = false,
 	chipKey,
 	onDelete,
-	onChipSelectUnselect,
+	onChipAction,
 	onClick,
 	...props
 }: ChipProps) => {
@@ -29,37 +28,42 @@ const Chip = ({
 		`chip--${chipVariant}`,
 		`chip--${chipVariant}--${color}`,
 		`chip--${size}`,
-		{ 'chip--selected': selected && selectable }
+		{ 'chip--selected': selected && !DeleteIcon }
 	);
 
 	const onChipSelected = () => {
-		if (selectable && !clickable) {
+		if (!DeleteIcon) {
+			let chip = {
+				chipKey,
+				label,
+				defaultSelected: !selected,
+			};
+			onChipAction?.(chip);
 			setSelected(!selected);
-			onChipSelectUnselect?.(label, !selected);
+		} else {
+			onClick?.(chipKey);
 		}
 	};
 
 	const onChipDelete = (event: React.MouseEvent<HTMLElement>) => {
 		event.stopPropagation();
-		onDelete?.(label);
+		onDelete?.(chipKey);
 	};
 
 	return (
 		<button
 			key={chipKey}
 			className={classes}
-			onClick={
-				selectable && !clickable
-					? onChipSelected
-					: clickable && !selectable
-						? onClick
-						: () => {}
-			}
+			onClick={clickable ? onChipSelected : () => {}}
 		>
 			<Typography {...props}>{label}</Typography>
-			{DeleteIcon && clickable && !selectable && (
-				<span onClick={(e) => onChipDelete(e)}>
-					<DeleteIcon />
+			{DeleteIcon && clickable && (
+				<span
+					role="button"
+					className="chip__delete"
+					onClick={(e) => onChipDelete(e)}
+				>
+					{DeleteIcon}
 				</span>
 			)}
 		</button>

@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import Chip from './Chip';
 import { XCircle } from 'lucide-react';
+import { ChipProps } from './Chip.model';
 
 const meta: Meta<typeof Chip> = {
 	component: Chip,
@@ -11,8 +12,8 @@ const meta: Meta<typeof Chip> = {
 export default meta;
 type Story = StoryObj<typeof Chip>;
 
-const onSelect = (label: string, selected: boolean) => {
-	console.log('Selected', selected);
+const onSelect = (chip?: ChipProps) => {
+	console.log(chip);
 };
 
 const onClick = () => {
@@ -31,11 +32,11 @@ export const ChipDefault: Story = {
 	),
 	args: {
 		label: 'Chip',
-		clickable: false,
+		chipKey: 'demo-1',
+		clickable: true,
 		defaultSelected: true,
-		selectable: true,
-		DeleteIcon: XCircle,
-		onChipSelectUnselect: onSelect,
+		DeleteIcon: <XCircle />,
+		onChipAction: onSelect,
 		onDelete: onDelete,
 		onClick: onClick,
 	},
