@@ -14,6 +14,7 @@ const ChipGroup = ({
 	clickable = true,
 	onChipClick,
 }: ChipGroup) => {
+	//TODO: default selected chips
 	const [selectedChips, setSelectedChips] = useState<ChipProps[]>([]);
 	const [allChips, setAllChips] = useState<ChipProps[]>(chipList);
 	const [selectedChip, setSelectedChip] = useState<ChipProps | null>(null);
