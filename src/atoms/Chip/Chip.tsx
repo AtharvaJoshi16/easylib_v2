@@ -17,6 +17,7 @@ const Chip = ({
 	onDelete,
 	onChipAction,
 	onClick,
+	disabled = false,
 	...props
 }: ChipProps) => {
 	const [selected, setSelected] = useState<boolean>(defaultSelected);
@@ -30,6 +31,8 @@ const Chip = ({
 		`chip--${size}`,
 		{ 'chip--selected': selected && !DeleteIcon }
 	);
+
+	const chipIconClass = classNames({ chip__delete: !disabled });
 
 	const onChipSelected = () => {
 		if (!DeleteIcon) {
@@ -55,13 +58,14 @@ const Chip = ({
 			key={chipKey}
 			className={classes}
 			onClick={clickable ? onChipSelected : () => {}}
+			disabled={disabled}
 		>
 			<Typography {...props}>{label}</Typography>
 			{DeleteIcon && clickable && (
 				<span
 					role="button"
-					className="chip__delete"
-					onClick={(e) => onChipDelete(e)}
+					className={chipIconClass}
+					onClick={!disabled ? (e) => onChipDelete(e) : () => {}}
 				>
 					{DeleteIcon}
 				</span>

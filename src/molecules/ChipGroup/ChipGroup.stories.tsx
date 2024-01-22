@@ -27,7 +27,7 @@ const handleChipClick = (chipKey: string) => {
 
 export const ChipGroupDefault: Story = {
 	render: (args) => (
-		<div style={{ margin: '30px', width: '400px' }}>
+		<div style={{ margin: '30px', width: '600px' }}>
 			<ChipGroup {...args} />
 		</div>
 	),
@@ -49,13 +49,32 @@ export const ChipGroupDefault: Story = {
 			{
 				chipKey: 'demo-3',
 				label: 'Messages',
+				disabled: true,
 			},
 			{
 				chipKey: 'demo-4',
 				label: 'Demo',
 			},
+			{
+				chipKey: 'demo-5',
+				label: 'Demo2',
+				disabled: true,
+			},
+			{
+				chipKey: 'demo-6',
+				label: 'Chips',
+			},
+			{
+				chipKey: 'demo-7',
+				label: 'Deserts',
+			},
+			{
+				chipKey: 'demo-8',
+				label: 'Salads',
+			},
 		],
 		deleteIcon: <XCircle />,
 		onChipClick: handleChipClick,
+		size: 'medium',
 	},
 };

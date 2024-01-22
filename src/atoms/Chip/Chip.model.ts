@@ -14,4 +14,5 @@ export interface ChipProps extends TypographyProps {
 	size?: 'small' | 'medium' | 'large' | 'x-large' | 'xx-large';
 	className?: string;
 	chipKey: string;
+	disabled?: boolean;
 }

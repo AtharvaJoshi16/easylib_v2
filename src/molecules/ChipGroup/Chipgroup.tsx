@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ChipGroup } from './ChipGroup.model';
 import { Chip } from '../../atoms';
 import './ChipGroup.scss';
@@ -12,20 +12,24 @@ const ChipGroup = ({
 	getSelected,
 	multiSelect = false,
 	clickable = true,
+	size = 'small',
 	onChipClick,
 }: ChipGroup) => {
 	//TODO: default selected chips
 	const [selectedChips, setSelectedChips] = useState<ChipProps[]>([]);
 	const [allChips, setAllChips] = useState<ChipProps[]>(chipList);
 	const [selectedChip, setSelectedChip] = useState<ChipProps | null>(null);
-
+	const multiSelectOptions = !deleteIcon ? multiSelect : false;
 	useEffect(() => {
-		console.log(allChips);
+		let selected = allChips?.filter((item) => item.defaultSelected);
+		setSelectedChips(selected);
+	}, []);
+	useEffect(() => {
 		getSelectedChips();
 	}, [selectedChips, selectedChip, allChips]);
 
 	const handleSelectUnselect = (chip: ChipProps) => {
-		if (!multiSelect) {
+		if (!multiSelectOptions) {
 			setSelectedChip(chip);
 		} else if (chip?.defaultSelected) {
 			setSelectedChips((chips) => [...chips, chip]);
@@ -45,7 +49,7 @@ const ChipGroup = ({
 	};
 
 	const getSelectedChips = () => {
-		if (multiSelect) {
+		if (multiSelectOptions) {
 			getSelected?.(selectedChips);
 		} else if (deleteIcon) {
 			getSelected?.(allChips);
@@ -62,6 +66,7 @@ const ChipGroup = ({
 				<Chip
 					chipVariant={chipVariant}
 					color={color}
+					size={size}
 					DeleteIcon={deleteIcon}
 					clickable={clickable}
 					onClick={onChipClick}
