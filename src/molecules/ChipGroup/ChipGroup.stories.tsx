@@ -34,13 +34,14 @@ export const ChipGroupDefault: Story = {
 	args: {
 		multiSelect: true,
 		chipVariant: 'outlined',
+		clickable: true,
+		displayLimit: 0,
 		color: 'secondary',
 		getSelected: getSelectedChips,
 		chipList: [
 			{
 				chipKey: 'demo-1',
 				label: 'Carbs',
-				defaultSelected: true,
 			},
 			{
 				chipKey: 'demo-2',

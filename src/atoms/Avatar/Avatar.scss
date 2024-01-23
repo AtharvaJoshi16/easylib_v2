@@ -1,5 +1,4 @@
 @import '../../globals/index.scss';
-
 @mixin image-border($size, $color) {
 	border: $size solid $color;
 }
@@ -7,6 +6,9 @@
 .avatar {
 	cursor: pointer;
 	border: 2px solid transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	&--border {
 		&--grey {
 			@include image-border(2px, $grey-500);
@@ -58,5 +60,14 @@
 		box-shadow:
 			rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
 			rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+	}
+
+	&__initials {
+		text-transform: uppercase;
+		background-color: $secondary-300;
+		font-size: 10cqw;
+		.typography {
+			color: white;
+		}
 	}
 }

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Typography from '../Typography';
 import { ChipProps } from './Chip.model';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Chip.scss';
 
 const Chip = ({
@@ -22,6 +22,10 @@ const Chip = ({
 }: ChipProps) => {
 	const [selected, setSelected] = useState<boolean>(defaultSelected);
 
+	useEffect(() => {
+		setSelected(defaultSelected);
+	}, [defaultSelected]);
+
 	const classes = classNames(
 		className,
 		'chip',
@@ -29,7 +33,7 @@ const Chip = ({
 		`chip--${chipVariant}`,
 		`chip--${chipVariant}--${color}`,
 		`chip--${size}`,
-		{ 'chip--selected': selected && !DeleteIcon }
+		{ 'chip--selected': defaultSelected || (selected && !DeleteIcon) }
 	);
 
 	const chipIconClass = classNames({ chip__delete: !disabled });

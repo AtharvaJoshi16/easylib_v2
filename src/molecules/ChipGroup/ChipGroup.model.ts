@@ -11,5 +11,6 @@ export interface ChipGroup {
 	deleteIcon?: JSX.Element;
 	chipVariant?: 'contained' | 'outlined';
 	color?: Colors;
+	displayLimit?: number;
 	size?: 'small' | 'medium' | 'large' | 'x-large' | 'xx-large';
 }
