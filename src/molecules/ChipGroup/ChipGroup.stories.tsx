@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import ChipGroup from './Chipgroup';
 import { ChipProps } from '../../atoms/Chip/Chip.model';
-import { XCircle } from 'lucide-react';
+import { Trash } from 'lucide-react';
 
 const meta: Meta<typeof ChipGroup> = {
 	component: ChipGroup,
@@ -73,7 +73,7 @@ export const ChipGroupDefault: Story = {
 				label: 'Salads',
 			},
 		],
-		deleteIcon: <XCircle />,
+		deleteIcon: <Trash />,
 		onChipClick: handleChipClick,
 		size: 'medium',
 	},

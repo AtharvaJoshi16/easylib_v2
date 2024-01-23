@@ -1,0 +1,62 @@
+@import '../../globals/index.scss';
+
+@mixin image-border($size, $color) {
+	border: $size solid $color;
+}
+
+.avatar {
+	cursor: pointer;
+	border: 2px solid transparent;
+	&--border {
+		&--grey {
+			@include image-border(2px, $grey-500);
+		}
+
+		&--primary {
+			@include image-border(2px, $primary-500);
+		}
+
+		&--secondary {
+			@include image-border(2px, $secondary-500);
+		}
+
+		&--tertiary {
+			@include image-border(2px, $tertiary-500);
+		}
+
+		&--warning {
+			@include image-border(2px, $yellow-500);
+		}
+
+		&--success {
+			@include image-border(2px, $green-500);
+		}
+
+		&--error {
+			@include image-border(2px, $red-500);
+		}
+
+		&--light {
+			@include image-border(2px, white);
+		}
+
+		&--dark {
+			@include image-border(2px, $grey-900);
+		}
+	}
+	&--rounded {
+		border-radius: 50%;
+	}
+
+	&--curved {
+		border-radius: 10px;
+	}
+
+	&:hover {
+		transform: scale(1.015);
+		transition: all 0.3s ease-in-out;
+		box-shadow:
+			rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+			rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+	}
+}
