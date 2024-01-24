@@ -18,7 +18,6 @@ export const AvatarDefault: Story = {
 	args: {
 		image: 'https://mui.com/static/images/avatar/2.jpg',
 		imageAlt: 'dummy-avatar',
-		size: 24,
 		shape: 'rounded',
 		borderColor: 'primary',
 		tooltipText: 'Alex Hales',
