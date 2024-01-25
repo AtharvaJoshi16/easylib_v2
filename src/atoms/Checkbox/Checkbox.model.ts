@@ -1,16 +1,28 @@
 import { InputHTMLAttributes } from 'react';
 
 export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
-	multiSelect?: boolean;
 	checked?: boolean;
+	variant?:
+		| 'primary'
+		| 'secondary'
+		| 'success'
+		| 'tertiary'
+		| 'success'
+		| 'yellow'
+		| 'error'
+		| 'grey'
+		| 'light'
+		| 'dark';
 	id: string;
 	label: string;
 	disabled?: boolean;
-	onCheck?: () => void;
+	onCheck?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	className?: string;
-	icon?: boolean;
+	icon?: JSX.Element;
+	full?: boolean;
 	iconOnly?: boolean;
+	labelFirst?: boolean;
 	helperText?: string;
-	warningText?: string;
+	warning?: boolean;
 	boldHeading?: boolean;
 }
