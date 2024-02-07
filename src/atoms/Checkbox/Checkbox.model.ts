@@ -1,18 +1,9 @@
 import { InputHTMLAttributes } from 'react';
+import { CheckboxVariants } from '../../types/colorTypes';
 
 export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 	checked?: boolean;
-	variant?:
-		| 'primary'
-		| 'secondary'
-		| 'success'
-		| 'tertiary'
-		| 'success'
-		| 'yellow'
-		| 'error'
-		| 'grey'
-		| 'light'
-		| 'dark';
+	variant?: CheckboxVariants;
 	id: string;
 	label: string;
 	disabled?: boolean;

@@ -8,3 +8,14 @@ export type Colors =
 	| 'grey'
 	| 'light'
 	| 'dark';
+
+export type CheckboxVariants =
+	| 'primary'
+	| 'secondary'
+	| 'success'
+	| 'tertiary'
+	| 'yellow'
+	| 'error'
+	| 'grey'
+	| 'light'
+	| 'dark';

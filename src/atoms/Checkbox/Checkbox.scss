@@ -1,7 +1,7 @@
 @import '../../globals/index.scss';
 
 @mixin variant-style($hover-bg-color, $hover-border-color, $checked-bg-color) {
-	&:hover input ~ .checkbox__checkmark {
+	input:hover:enabled:not(:checked) ~ .checkbox__checkmark {
 		background-color: $hover-bg-color;
 		border-color: $hover-border-color;
 	}
@@ -16,7 +16,6 @@
 	width: fit-content;
 	&__container {
 		display: block;
-		padding-left: 45px;
 		cursor: pointer;
 		display: flex;
 		align-items: center;
