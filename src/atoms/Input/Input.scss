@@ -1,0 +1,37 @@
+@import '../../globals/index.scss';
+.input-field {
+	font-family: var(--rubik-regular);
+	&--full {
+		width: 100%;
+	}
+
+	&--small {
+		padding: 8px 12px;
+		border-radius: 6px;
+		font-size: 14px;
+		border: 1.5px solid $grey-500;
+		min-width: 300px;
+	}
+
+	&--medium {
+		padding: 12px 16px;
+		border-radius: 8px;
+		font-size: 16px;
+		border: 1.5px solid $grey-500;
+		min-width: 300px;
+	}
+
+	&--large {
+		padding: 16px 20px;
+		border-radius: 10px;
+		font-size: 18px;
+		border: 1.5px solid $grey-500;
+		min-width: 400px;
+	}
+
+	&:focus {
+		outline: 2px solid $primary-900;
+		outline-offset: 2px;
+		border-color: $grey-900;
+	}
+}

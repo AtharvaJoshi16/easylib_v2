@@ -18,7 +18,8 @@ const CheckboxGroup = ({
 	const classes = classNames(
 		'checkbox-group',
 		className,
-		`checkbox-group--${alignment}`
+		`checkbox-group--${alignment}`,
+		{ 'checkbox-group--full': full }
 	);
 	const [selected, setSelected] = useState<CheckboxProps[]>([]);
 

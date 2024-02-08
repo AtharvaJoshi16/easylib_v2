@@ -6,6 +6,7 @@
 		"declaration": true,
 		"declarationDir": "lib",
 		"allowJs": true,
+		"noImplicitAny": false,
 		"skipLibCheck": true,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,

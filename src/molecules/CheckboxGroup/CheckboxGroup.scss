@@ -1,6 +1,10 @@
 @import '../../globals/index.scss';
 .checkbox-group {
 	display: flex;
+	width: fit-content;
+	&--full {
+		width: 100%;
+	}
 	&--horizontal {
 		align-items: center;
 		gap: 20px;
