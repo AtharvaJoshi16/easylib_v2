@@ -1,6 +1,18 @@
 @import '../../globals/index.scss';
+
+@mixin variants($border-color, $focus-bg, $active-bg) {
+	border-color: $border-color !important;
+	&:focus {
+		background-color: $focus-bg;
+	}
+	&:active {
+		background-color: $active-bg;
+	}
+}
+
 .input-field {
 	font-family: var(--rubik-regular);
+	color: $text-primary;
 	&--full {
 		width: 100%;
 	}
@@ -27,6 +39,40 @@
 		font-size: 18px;
 		border: 1.5px solid $grey-500;
 		min-width: 400px;
+	}
+
+	&--contained {
+		&--primary {
+			@include variants($primary-700, $primary-70, $primary-40);
+		}
+
+		&--secondary {
+			@include variants($secondary-700, $secondary-70, $secondary-40);
+		}
+
+		&--error {
+			@include variants($primary-700, $primary-70, $primary-40);
+		}
+
+		&--success {
+			@include variants($primary-700, $primary-70, $primary-40);
+		}
+
+		&--warning {
+			@include variants($primary-700, $primary-70, $primary-40);
+		}
+
+		&--light {
+			@include variants($primary-700, $primary-70, $primary-40);
+		}
+
+		&--dark {
+			@include variants($primary-700, $primary-70, $primary-40);
+		}
+
+		&--tertiary {
+			@include variants($primary-700, $primary-70, $primary-40);
+		}
 	}
 
 	&:focus {

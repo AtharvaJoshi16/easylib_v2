@@ -9,6 +9,8 @@ const Input = ({
 	placeholder,
 	ariaLabel,
 	value,
+	variant = 'outlined',
+	color,
 	debounce = false,
 	debounceTime = 500,
 	inputSize = Sizes.medium,
@@ -36,7 +38,9 @@ const Input = ({
 		className,
 		'input-field',
 		`input-field--${inputSize}`,
-		{ 'input-field--full': full }
+		{ 'input-field--full': full },
+		`input-field--${variant}`,
+		{ [`input-field--${variant}--${color}`]: color }
 	);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
