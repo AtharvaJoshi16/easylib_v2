@@ -5,6 +5,21 @@ import Input from './Input';
 const meta: Meta<typeof Input> = {
 	component: Input,
 	title: 'Components/Atoms/Input',
+	argTypes: {
+		variantColor: {
+			options: [
+				,
+				'primary',
+				'secondary',
+				'tertiary',
+				'success',
+				'error',
+				'warning',
+				'grey',
+				'dark',
+			],
+		},
+	},
 };
 
 export default meta;
@@ -16,13 +31,15 @@ const handleInputChange = (e) => {
 
 export const InputDefault: Story = {
 	render: (args) => (
-		<div style={{ margin: '30px' }}>
+		<div style={{ margin: '30px', width: '400px' }}>
 			<Input {...args} />
 		</div>
 	),
 	args: {
 		placeholder: 'Enter something...',
 		ariaLabel: 'first-name',
+		label: true,
+		labelText: 'First name',
 		required: true,
 		debounce: true,
 		debounceTime: 1000,

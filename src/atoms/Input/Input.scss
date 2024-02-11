@@ -1,18 +1,58 @@
 @import '../../globals/index.scss';
 
-@mixin variants($border-color, $focus-bg, $active-bg) {
+.input-field-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+@mixin variants($bg-color, $border-color, $active-bg, $focus-outline) {
 	border-color: $border-color !important;
-	&:focus {
-		background-color: $focus-bg;
-	}
+	background-color: $bg-color;
 	&:active {
 		background-color: $active-bg;
+	}
+	&:focus {
+		outline-color: $focus-outline !important;
 	}
 }
 
 .input-field {
 	font-family: var(--rubik-regular);
 	color: $text-primary;
+
+	&__label {
+		&--standard {
+			font-family: var(--rubik-regular);
+			color: $grey-700;
+			margin-left: 4px;
+		}
+
+		&__asterisk {
+			color: $red-800;
+			margin-left: 1px;
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: bold;
+			font-size: large;
+		}
+
+		&--bold {
+			font-family: var(--rubik-semibold);
+		}
+
+		&--small {
+			font-size: 14px;
+		}
+
+		&--medium {
+			font-size: 16px;
+		}
+
+		&--large {
+			font-size: 18px;
+		}
+	}
+
 	&--full {
 		width: 100%;
 	}
@@ -43,36 +83,51 @@
 
 	&--contained {
 		&--primary {
-			@include variants($primary-700, $primary-70, $primary-40);
+			@include variants($primary-30, $primary-700, $primary-60, $primary-900);
 		}
 
 		&--secondary {
-			@include variants($secondary-700, $secondary-70, $secondary-40);
+			@include variants(
+				$secondary-30,
+				$secondary-700,
+				$secondary-40,
+				$secondary-900
+			);
 		}
 
 		&--error {
-			@include variants($primary-700, $primary-70, $primary-40);
+			@include variants($red-30, $red-700, $red-40, $red-900);
 		}
 
 		&--success {
-			@include variants($primary-700, $primary-70, $primary-40);
+			@include variants($green-30, $green-700, $green-40, $green-900);
 		}
 
 		&--warning {
-			@include variants($primary-700, $primary-70, $primary-40);
-		}
-
-		&--light {
-			@include variants($primary-700, $primary-70, $primary-40);
+			@include variants($yellow-30, $yellow-700, $yellow-40, $yellow-900);
 		}
 
 		&--dark {
-			@include variants($primary-700, $primary-70, $primary-40);
+			color: white;
+			&::placeholder {
+				color: white;
+			}
+			@include variants($grey-800, $grey-50, $grey-700, $grey-20);
 		}
 
 		&--tertiary {
-			@include variants($primary-700, $primary-70, $primary-40);
+			@include variants(
+				$tertiary-30,
+				$tertiary-700,
+				$tertiary-40,
+				$tertiary-900
+			);
 		}
+	}
+
+	&--standard {
+		border-width: 0 0 2px 0;
+		border-radius: 0;
 	}
 
 	&:focus {

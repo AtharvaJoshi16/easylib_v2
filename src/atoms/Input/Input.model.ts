@@ -5,8 +5,15 @@ import { Colors } from '../../types/colorTypes';
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	placeholder?: string;
 	variant?: 'outlined' | 'contained' | 'standard';
-	color?: Colors;
+	variantColor?: InputColors;
 	value?: string;
+	id: string;
+	key: string;
+	labelKey: string;
+	label?: boolean;
+	labelText?: string;
+	boldLabel?: boolean;
+	labelStyle?: 'standard' | 'swipeup' | 'onborder';
 	inputSize?: Sizes;
 	warning?: boolean;
 	debounce?: boolean;
@@ -19,3 +26,5 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	className?: string;
 	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
+export type InputColors = Omit<Colors, 'light'>;
