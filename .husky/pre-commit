@@ -3,4 +3,4 @@
 chmod ug+x .husky/*
 chmod ug+x .git/hooks/*
 
-npx lint-staged
+npm run lint
