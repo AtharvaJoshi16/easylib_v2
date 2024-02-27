@@ -7,9 +7,7 @@ import { useDebounce } from 'usehooks-ts';
 
 const Input = ({
 	placeholder,
-	ariaLabel,
 	id,
-	key,
 	labelKey,
 	value,
 	variant = 'outlined',
@@ -27,13 +25,20 @@ const Input = ({
 	warningText,
 	full = false,
 	className,
+	onMouseDown,
 	onChange,
+	onFocus,
+	onBlur,
 	...props
 }: InputProps) => {
-	const [inputValue, setValue] = useState<string>(value ?? '');
+	const [inputValue, setValue] = useState<string | number | readonly string[]>(
+		value ?? ''
+	);
 	const [inputEvent, setEvent] =
 		useState<React.ChangeEvent<HTMLInputElement>>();
-	const debouncedValue = useDebounce<string>(
+	const [mouseClick, setClick] = useState(false);
+
+	const debouncedValue = useDebounce<string | number | readonly string[]>(
 		inputValue,
 		debounce ? debounceTime : 0
 	);
@@ -41,6 +46,7 @@ const Input = ({
 	useEffect(() => {
 		inputEvent && onChange?.(inputEvent);
 	}, [debouncedValue]);
+
 	const classes = classNames(
 		className,
 		'input-field',
@@ -61,6 +67,25 @@ const Input = ({
 		setValue(e.target.value);
 		setEvent(e);
 	};
+
+	const handleMouseDown = (e: React.MouseEvent<HTMLInputElement>) => {
+		(e.target as Element).classList.remove('input-field--focus');
+		setClick(true);
+		onMouseDown?.(e);
+	};
+
+	const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+		if (!mouseClick) {
+			(e.target as Element).classList.add('input-field--focus');
+		}
+		onFocus?.(e);
+	};
+
+	const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+		setClick(false);
+		e.target.classList.remove('input-field--focus');
+		onBlur?.(e);
+	};
 	return (
 		<div className="input-field-wrapper">
 			{label && (
@@ -72,10 +97,10 @@ const Input = ({
 			<input
 				value={inputValue}
 				className={classes}
-				placeholder={placeholder}
-				required={required}
-				aria-label={ariaLabel}
 				onChange={(e) => handleChange(e)}
+				onMouseDown={(e) => handleMouseDown(e)}
+				onBlur={(e) => handleBlur(e)}
+				onFocus={(e) => handleFocus(e)}
 				{...props}
 			/>
 		</div>
